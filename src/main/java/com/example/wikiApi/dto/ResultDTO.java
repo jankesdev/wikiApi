@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class ResultDTO {
-    private QueryDTO queryDTO;
+    private QueryDTO query;
 }
