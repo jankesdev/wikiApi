@@ -1,9 +1,11 @@
 package com.example.wikiApi.service;
 
+import com.example.wikiApi.dto.ResultDTO;
 import com.example.wikiApi.response.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -29,6 +31,7 @@ public class WikiServiceImpl implements WikiService {
         URI uri = URI.create(URL_API + "?action=query&list=search&format=json&srsearch=%22" + name + "%22&srlimit=10");
 
         try {
+            ResponseEntity<ResultDTO> responseEntity = restTemplate.getForEntity(uri, ResultDTO.class);
 
         } catch (RestClientException e) {
             log.error("Server problem. Check api key");
