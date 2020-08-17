@@ -26,3 +26,19 @@ git clone https://github.com/jankesdev/wikiApi
 ```bash
 http://localhost:8080/swagger-ui.html
 ```
+
+#### Get club
+Example
+```bash
+http://localhost:8080/api/club?name=Liverpool
+```
+
+Response
+
+```bash
+{
+    "name": "Liverpool F.C.",
+    "url": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+    "snippet": "<span class=\"searchmatch\">Liverpool</span> Football Club is a professional football club in <span class=\"searchmatch\">Liverpool</span>, England, that competes in the Premier League, the top tier of English football. Domestically"
+}
+```
