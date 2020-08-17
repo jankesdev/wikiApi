@@ -1,6 +1,7 @@
 package com.example.wikiApi.api;
 
 import com.example.wikiApi.response.ApiResponse;
+import com.example.wikiApi.service.WikiServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,11 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api")
 public class WikiController {
 
-    public WikiController() {
+    WikiServiceImpl wikiService;
+
+    public WikiController(WikiServiceImpl wikiService) {
+        this.wikiService = wikiService;
     }
 
     @GetMapping("club")
     public ApiResponse getClub(@RequestParam("name") String clubName) {
-        return null; //todo
+        return wikiService.getClubByName(clubName);
     }
 }
