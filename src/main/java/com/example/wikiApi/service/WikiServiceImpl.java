@@ -35,6 +35,8 @@ public class WikiServiceImpl implements WikiService {
     @Override
     public ApiResponse getClubByName(String name) {
 
+        name = name.replaceAll("\\s+","_");
+
         URI uri = URI.create(URL_API + "?action=query&list=search&format=json&srsearch=%22" + name + "%22&srlimit=10");
 
         List<SearchDTO> searchDTOS;
@@ -53,7 +55,7 @@ public class WikiServiceImpl implements WikiService {
 
         SearchDTO searchDTO = searchDTOS.get(0);
 
-        String urlResponse = URL_RESPONSE + searchDTO.getTitle();
+        String urlResponse = URL_RESPONSE + searchDTO.getTitle().replaceAll("\\s+", "_");
 
         return new ApiResponse(searchDTO.getTitle(), urlResponse, searchDTO.getSnippet());
     }

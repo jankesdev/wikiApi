@@ -1,3 +1,6 @@
+server:
+  port: 8088
+
 wikiApi:
   urlApi: "https://en.wikipedia.org/w/api.php"
   urlResponse: "https://en.wikipedia.org/wiki/"
