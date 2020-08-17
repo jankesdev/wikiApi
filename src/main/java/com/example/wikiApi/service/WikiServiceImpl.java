@@ -3,6 +3,7 @@ package com.example.wikiApi.service;
 import com.example.wikiApi.dto.ResultDTO;
 import com.example.wikiApi.dto.SearchDTO;
 import com.example.wikiApi.exception.InternalServerException;
+import com.example.wikiApi.exception.NotFoundException;
 import com.example.wikiApi.response.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,9 @@ public class WikiServiceImpl implements WikiService {
 
     @Value("${wikiApi.urlApi}")
     private String URL_API;
+
+    @Value("${wikiApi.urlResponse}")
+    private String URL_RESPONSE;
 
     RestTemplate restTemplate;
 
@@ -44,12 +48,12 @@ public class WikiServiceImpl implements WikiService {
         }
 
         if(searchDTOS.isEmpty()) {
-            //todo
+            throw new NotFoundException("Not found club for '" + name + "'");
         }
 
         SearchDTO searchDTO = searchDTOS.get(0);
 
-        String urlResponse = "";
+        String urlResponse = URL_RESPONSE + searchDTO.getTitle();
 
         return new ApiResponse(searchDTO.getTitle(), urlResponse, searchDTO.getSnippet());
     }
