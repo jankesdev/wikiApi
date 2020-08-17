@@ -49,6 +49,8 @@ public class WikiServiceImpl implements WikiService {
 
         SearchDTO searchDTO = searchDTOS.get(0);
 
-        return new ApiResponse();
+        String urlResponse = "";
+
+        return new ApiResponse(searchDTO.getTitle(), urlResponse, searchDTO.getSnippet());
     }
 }
