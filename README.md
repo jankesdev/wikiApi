@@ -18,8 +18,8 @@ git clone https://github.com/jankesdev/wikiApi
 
 1. Build project
 `cd wikiApi`
-2. `docker build -t wikiApi/wikiApi .`
-2. `docker run -p 8080:8080 wikiApi/wikiApi`
+2. `docker build -t wikiapi/wikiapi .`
+2. `docker run -p 8080:8080 wikiapi/wikiapi`
 
 #### Documentation API - swagger
 
